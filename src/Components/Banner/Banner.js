@@ -3,10 +3,10 @@ import React from 'react';
 const Banner = () => {
     return (
         <div
-            class="hero h-[90vh]"
+            class="hero h-[90vh] bg-fixed"
             style={{
                 backgroundImage: 'url(https://api.lorem.space/image/fashion?w=1000&h=800)',
-                backgroundAttachment:'fixed'
+                // backgroundAttachment:'fixed'
             }}>
             <div class="hero-overlay bg-opacity-60"></div>
             <div class="hero-content text-center text-neutral-content">
