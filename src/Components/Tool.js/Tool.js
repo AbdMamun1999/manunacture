@@ -5,6 +5,9 @@ const Tool = ({ tool }) => {
     const { _id,name, available_quantity, minimum_quantity, price } = tool;
     const navigate = useNavigate()
 
+    const handleNavigate = id =>{
+        navigate(`/purchase/${id}`)
+    }
     return (
         <div class="card  bg-base-100 shadow-xl ">
             <figure class="px-10 pt-10">
@@ -18,7 +21,7 @@ const Tool = ({ tool }) => {
                 <small><p className='font-bold'>You have to order minimun {minimum_quantity} pices</p></small>
                 <div class="card-actions">
                     <button
-                    onClick={()=>navigate('/purchase/:id')}
+                    onClick={()=>handleNavigate(_id)}
                      class="btn btn-primary">
                          Buy Now
                          </button>
