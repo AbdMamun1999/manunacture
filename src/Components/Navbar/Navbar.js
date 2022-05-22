@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 
 const Navbar = () => {
     const [user] = useAuthState(auth)
+    console.log(user.displayName)
 
     const handleLogOut = () => {
         signOut(auth)
@@ -19,11 +20,14 @@ const Navbar = () => {
         <li><Link to="/about">About</Link></li>
         {
             user ?
-                <button
-                onClick={handleLogOut}
-                    className='btn btn-ghost'>
-                    logout
-                </button>
+                <div className='d-flex flex-row'>
+                    <button
+                        onClick={handleLogOut}
+                        className='btn btn-ghost'>
+                        logout
+                    </button>
+                    <p>{user?.displayName}</p>
+                </div>
                 /*  <div class="dropdown dropdown-end">
                      <label tabindex="0" class="btn btn-ghost rounded-btn">Dropdown</label>
                      <ul tabindex="0" class="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
