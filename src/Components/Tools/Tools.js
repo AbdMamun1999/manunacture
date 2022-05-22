@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Tool from '../Tool.js/Tool';
 
-const tools = [
-    { _id: 1, name: 'Pria' },
-    { _id: 2, name: 'Pria' },
-    { _id: 3, name: 'Pria' },
-    { _id: 4, name: 'Pria' },
-    { _id: 5, name: 'Pria' },
-    { _id: 6, name: 'Pria' }
-]
 
 const Tools = () => {
+    const [tools,setTools] = useState([])
+
+
+
+    useEffect(()=>{
+        fetch('tools.json')
+        .then(res=>res.json())
+        .then(data=>{
+            setTools(data)
+           
+            
+        })
+    },[])
+
     return (
         <div>
             <h1 className='text-4xl text-center font-bold my-10 '>
@@ -20,6 +26,7 @@ const Tools = () => {
                 {
                     tools.map(tool => <Tool
                         key={tool._id}
+                        tool={tool}
                     ></Tool>)
                 }
             </div>
