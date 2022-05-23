@@ -5,7 +5,7 @@ const Banner = () => {
         <div
             class="hero min-h-screen bg-fixed"
             style={{
-                backgroundImage: 'url(https://api.lorem.space/image/fashion?w=1000&h=800)',
+                backgroundImage: 'url()',
                 // backgroundAttachment:'fixed'
             }}>
             <div class="hero-overlay bg-opacity-60"></div>
