@@ -1,22 +1,25 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 
 const Navbar = () => {
-    const [user,loading] = useAuthState(auth)
+    const [user, loading] = useAuthState(auth)
     const navigate = useNavigate()
 
-    if(loading){
+
+    if (loading) {
         return <Loading></Loading>
     }
+
+
     const handleLogOut = () => {
         signOut(auth)
         navigate('/login')
     }
-
+    console.log(user?.displayName)
 
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
@@ -25,7 +28,7 @@ const Navbar = () => {
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/about">About</Link></li>
         {
-            user ?
+            user?.displayName ?
                 <div className='d-flex flex-row'>
                     <button
                         onClick={handleLogOut}

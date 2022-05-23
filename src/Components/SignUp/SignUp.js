@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 
@@ -9,42 +9,46 @@ import Loading from '../Loading/Loading';
 
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [passwordDontMatch,setPasswordDontMatch] = useState('')
+    const [passwordDontMatch, setPasswordDontMatch] = useState('')
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-      const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-      const navigate = useNavigate()
-      const location = useLocation()
-      const from = location.state?.from?.pathname || "/";
-      let errorMassage
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [updateProfile, updating, upError] = useUpdateProfile(auth);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+    let errorMassage
 
-      if(error || gError){
-        errorMassage = <p className='text-red-600'>{error.message}||{gError.message}</p>
-      }
+    if (error || gError || upError) {
+        errorMassage = <p className='text-red-600'>{error?.message}||{gError?.message}||{upError?.message}</p>
+    }
 
-      if(loading|| gLoading){
-          return <Loading></Loading>
-      }
+    if (loading || gLoading) {
+        return <Loading></Loading>
+    }
 
-      if(user || gUser){
+    if (user || gUser) {
         navigate(from, { replace: true });
-      }
+    }
 
-    const onSubmit = data =>{
-        const {name,email,password,confirmPassword} = data;
-        if(!(password === confirmPassword)){
-              setPasswordDontMatch(<p className='text-red-600'>Password and Confirm Password do not match</p>)
-              console.log(confirmPassword)
-        }else{
-            createUserWithEmailAndPassword(email, password)
+    const onSubmit = async data => {
+        const { name, email, password, confirmPassword } = data;
+        if (!(password === confirmPassword)) {
+            setPasswordDontMatch(<p className='text-red-600'>Password and Confirm Password do not match</p>)
+            console.log(confirmPassword)
+        } else {
+            await createUserWithEmailAndPassword(email, password)
+            await updateProfile({ displayName: name })
         }
     }
 
-    const handleSignInWithGoogle = () =>{
+    console.log(user)
+
+    const handleSignInWithGoogle = () => {
         signInWithGoogle()
     }
     return (
@@ -152,9 +156,9 @@ const SignUp = () => {
 
                         <div class="divider">OR</div>
                         <button
-                        onClick={handleSignInWithGoogle}
-                         type="button" 
-                         class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">
+                            onClick={handleSignInWithGoogle}
+                            type="button"
+                            class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">
                             <svg class="w-4 h-4 mr-2 -ml-1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
                             Sign in with Google
                         </button>

@@ -1,18 +1,52 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const PurchaseModal = () => {
+    const [user] = useAuthState(auth)
+
+    const handleSubmit = event => {
+        console.log(event)
+        event.preventDefault()
+    }
+    console.log(user)
     return (
         <>
-
             <input type="checkbox" id="purchase-modal" class="modal-toggle" />
             <div class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
-                <label for="purchase-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
-                    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div class="modal-action">
-                        <label for="purchase-modal" class="btn">Yay!</label>
-                    </div>
+                    <label for="purchase-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <form
+                        onClick={handleSubmit}
+                        className='grid grid-cols-1 justify-items-center gap-4'>
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs" />
+                        <input
+                            type="submit"
+                            value='BUY NOW' placeholder="Type here" class="btn btn-primary w-full max-w-xs" />
+                    </form>
                 </div>
             </div>
         </>

@@ -40,7 +40,7 @@ const Purchase = () => {
                     <ul className='mt-2'>
                         <li>In stack:{product.available_quantity} pices</li>
                     </ul>
-                    <label onClick={handleModal} for="purchase-modal" class="btn btn-primary modal-button">open modal</label>
+                    <label onClick={handleModal} for="purchase-modal" class="btn btn-primary modal-button">Order now</label>
                     {modalOn && <PurchaseModal></PurchaseModal>}
                 </div>
             </div>
