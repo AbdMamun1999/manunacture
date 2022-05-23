@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 
 
 
@@ -17,9 +18,20 @@ const SignUp = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
       const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
       const navigate = useNavigate()
+      const location = useLocation()
+      const from = location.state?.from?.pathname || "/";
+      let errorMassage
+
+      if(error || gError){
+        errorMassage = <p className='text-red-600'>{error.message}||{gError.message}</p>
+      }
+
+      if(loading|| gLoading){
+          return <Loading></Loading>
+      }
 
       if(user || gUser){
-          navigate('/')
+        navigate(from, { replace: true });
       }
 
     const onSubmit = data =>{
@@ -125,6 +137,9 @@ const SignUp = () => {
                                     {errors?.confirmPassword?.type === 'required' && <span class="label-text-alt text-red-600">{errors?.confirmPassword.message}</span>}
                                     {passwordDontMatch}
                                 </label>
+                            </div>
+                            <div>
+                                {errorMassage}
                             </div>
                             <input type="submit" class="btn btn-primary  w-full max-w-xs text-white" value='Sign up' />
                         </form>
