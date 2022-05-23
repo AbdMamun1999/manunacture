@@ -1,10 +1,12 @@
 [
-    { "_id": 1, "name":"CRAFTSMAN Tape Measure, Easy Grip, 30-Foot (CMHT37470S)" ,"available_quantity":50000,"price":20,"minimum_quantity":2000},
-    { "_id": 1, "name":"CRAFTSMAN VISE-GRIP Adjustable Crescent Wrench, 10-Inch (2078610)" ,"available_quantity":50000,"price":22,"minimum_quantity":2000},
-    { "_id": 1, "name":"CRAFTSMAN Hammer, Fiberglass, 16 oz. (CMHT51398)" ,"available_quantity":40000,"price":27,"minimum_quantity":2000},
-    { "_id": 1, "name":"CRAFTSMAN Ratcheting Screwdriver, Multibit Set, 26-Piece (CMHT68001)" ,"available_quantity":50000,"price":26,"minimum_quantity":2000},
-    { "_id": 1, "name":"CRAFTSMAN CMHT81712 CFT SLIP JOINT PLIER-6IN , Red " ,"available_quantity":100000,"price":11,"minimum_quantity":2000},
-    { "_id": 1, "name":"CRAFTSMAN Lathe Chisel, 1/2-Inch Ring Tool  " ,"available_quantity":60000,"price":28,"minimum_quantity":2000}
-   
-  
+    {"name":"CRAFTSMAN Tape Measure, Easy Grip, 30-Foot (CMHT37470S)" ,"available_quantity":50000,"price":20,"minimum_quantity":2000,"brand":"Craftsman","style":"Hammer 16 oz","weigth":"16 Ounces","material":"Steel, fiberglass","description":["Durability: overstrike protection where fiberglass handles are most prone to break","Improved grip during use: over mold grip","Driving and pulling nails"]},
+    {"name":"CRAFTSMAN VISE-GRIP Adjustable Crescent Wrench, 10-Inch (2078610)" ,"available_quantity":50000,"price":22,"minimum_quantity":2000,"brand":"Craftsman","style":"Hammer 16 oz","weigth":"16 Ounces","material":"Steel, fiberglass","description":["Durability: overstrike protection where fiberglass handles are most prone to break","Improved grip during use: over mold grip","Driving and pulling nails"]},
+    {"name":"CRAFTSMAN Hammer, Fiberglass, 16 oz. (CMHT51398)" ,"available_quantity":40000,"price":27,"minimum_quantity":2000,"brand":"Craftsman","style":"Hammer 16 oz","weigth":"16 Ounces","material":"Steel, fiberglass","description":["Durability: overstrike protection where fiberglass handles are most prone to break","Improved grip during use: over mold grip","Driving and pulling nails"]},
+    {"name":"CRAFTSMAN Ratcheting Screwdriver, Multibit Set, 26-Piece (CMHT68001)" ,"available_quantity":50000,"price":26,"minimum_quantity":2000,"brand":"Craftsman","style":"Hammer 16 oz","weigth":"16 Ounces","material":"Steel, fiberglass","description":["Durability: overstrike protection where fiberglass handles are most prone to break","Improved grip during use: over mold grip","Driving and pulling nails"]},
+    {"name":"CRAFTSMAN CMHT81712 CFT SLIP JOINT PLIER-6IN , Red " ,"available_quantity":100000,"price":11,"minimum_quantity":2000,"brand":"Craftsman","style":"Hammer 16 oz","weigth":"16 Ounces","material":"Steel, fiberglass","description":["Durability: overstrike protection where fiberglass handles are most prone to break","Improved grip during use: over mold grip","Driving and pulling nails"]},
+    {"name":"CRAFTSMAN Lathe Chisel, 1/2-Inch Ring Tool  " ,"available_quantity":60000,"price":28,"minimum_quantity":2000,"brand":"Craftsman","style":"Hammer 16 oz","weigth":"16 Ounces","material":"Steel, fiberglass","description":["Durability: overstrike protection where fiberglass handles are most prone to break","Improved grip during use: over mold grip","Driving and pulling nails"]}
 ]
+
+
+
+

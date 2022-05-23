@@ -17,7 +17,6 @@ const Navbar = () => {
         navigate('/login')
     }
 
-    console.log(user)
 
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
